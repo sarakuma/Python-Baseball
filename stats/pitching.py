@@ -4,7 +4,10 @@ import matplotlib.pyplot as plt
 from data import games 
 
 plays = games[games["type"] == "play"]
-strike_outs = plays[plays["events"].str.contains('K')]
+plays.columns = ["type", "multi2", "multi3", "multi4", "multi5", "multi6", "event", "game_id", "year"]
+
+print(plays.info())
+strike_outs = plays[plays["event"].str.contains("K")]
 strike_outs = strike_outs.groupby(["year", "game_id"]).size()
 
 strike_outs  = strike_outs.reset_index(name="strike_outs")

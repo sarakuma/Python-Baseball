@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 
 try:
     from data import games
-
+  
     plays_frame = games.query("type == 'play' & event != 'NP'")
     plays_frame.columns = ['type', 'inning', 'team', 'player', 'count', 'pitches', 'event', 'game_id', 'year']
 
